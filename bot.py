@@ -3,8 +3,10 @@ from discord.ext import commands
 import yt_dlp
 import os
 
-# No privileged intents required
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 # --- Startup Event ---
 @bot.event
@@ -48,7 +50,7 @@ async def dl(ctx, url: str):
 
         embed = discord.Embed(
             title="🎬 Video Downloaded",
-            description=f"Here’s your video from:\n{url}",
+            description=f"Here's your video from:\n{url}",
             color=0x00FFFF
         )
         embed.set_footer(text="Flow Downloader • Neon Blue Theme")
@@ -62,3 +64,4 @@ async def dl(ctx, url: str):
         await ctx.send(f"⚠️ Error: {e}\nTry a direct video link.")
 
 bot.run(os.getenv("TOKEN"))
+
