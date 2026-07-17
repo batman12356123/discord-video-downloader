@@ -14,18 +14,6 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
     await bot.change_presence(activity=discord.Game(name="Downloading videos ⚡"))
 
-# --- Help Command ---
-@bot.command()
-async def help(ctx):
-    embed = discord.Embed(
-        title="📘 Flow Downloader Commands",
-        description="Neon‑blue premium downloader bot",
-        color=0x00FFFF
-    )
-    embed.add_field(name="!dl <link>", value="Download a video from ANY supported site.", inline=False)
-    embed.add_field(name="!ping", value="Check if the bot is online.", inline=False)
-    await ctx.send(embed=embed)
-
 # --- Ping Command ---
 @bot.command()
 async def ping(ctx):
